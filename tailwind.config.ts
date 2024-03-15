@@ -8,10 +8,18 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			backgroundImage: {
-				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+			colors: {
+				primary: '#FFDE07'
+			},
+			backgroundColor: {
+				'gray-900': '#151515'
+			},
+			transitionProperty: {
+				'hover': '.2s all'
+			},
+			maxWidth: {
+				'screen-sm': '380px',
+				'screen-md': '520px'
 			},
 		},
 	},

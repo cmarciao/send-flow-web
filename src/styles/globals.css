@@ -1,3 +1,21 @@
 @tailwind base;
+
+@layer base {
+    body {
+        @apply text-primary;
+        @apply bg-gray-900;
+    }
+
+    h1 {
+        @apply text-[2.125rem];
+        @apply font-bold;
+    }
+
+    h2 {
+        @apply text-2xl;
+        @apply font-bold;
+    }
+}
+
 @tailwind components;
 @tailwind utilities;
