@@ -6,6 +6,7 @@ import { AddContactModal } from '@/components/AddContactModal';
 import { cn } from '@/utils/cn';
 import { Contact } from '@/types/Contact';
 import { ContactCard } from '@/components/ContactCard';
+import { SendMessageModal } from '@/components/SendMessageModal';
 
 export const metadata: Metadata = {
 	title: 'My contacts',
@@ -33,20 +34,22 @@ export default function Home() {
 
 				<section className={
 					cn(
-						'flex flex-col items-center justify-between mt-8 text-center',
-						'sm:flex-row'
+						'flex flex-col mt-8',
 					)
 				}>
+					<div className='flex items-center justify-between'>
+						<AddContactModal />
+						<SendMessageModal />
+					</div>
+
 					<h2 className={
 						cn(
-							'text-white mb-4',
+							'text-white mt-8 mb-4',
 							'sm:mb-0'
 						)
 					}>
                         You have {contacts.length} {contacts.length === 1 ? ' contact' : ' contacts'}
 					</h2>
-
-					<AddContactModal />
 				</section>
 
 				<div className='flex flex-col gap-4 mt-8'>
