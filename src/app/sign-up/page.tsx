@@ -1,11 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Input } from '@/components/Input';
-import { Button } from '@/components/Button';
 import { Divider } from '@/components/Divider';
-
-import { useSignUp } from './useSignUp';
+import { SignUpForm } from './components/SignUpForm';
+import { APP_ROUTES } from '@/constants/app-routes';
 
 export const metadata: Metadata = {
 	title: 'Sign up',
@@ -13,8 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function SignUp() {
-	const { handleSignUp } = useSignUp();
-
 	return (
 		<main className='h-screen flex items-center justify-center'>
 			<section className='text-center max-w-screen-sm w-full'>
@@ -22,27 +18,7 @@ export default function SignUp() {
 					<span className='text-white'>Create</span> your account
 				</h1>
 
-				<form className='mt-12 flex flex-col gap-4' action={handleSignUp}>
-					<Input
-						label='Email'
-						type='text'
-						placeholder='Your email'
-						className='w-full'
-						required
-					/>
-					<Input
-						label='Password'
-						type='password'
-						placeholder='Your password'
-						className='w-full'
-						required
-						minLength={6}
-					/>
-
-					<Button className='mt-8' type='submit'>
-                        Sign up
-					</Button>
-				</form>
+				<SignUpForm />
 
 				<Divider
 					text='or'
@@ -51,7 +27,7 @@ export default function SignUp() {
 
 				<div className='mt-8'>
 					<span className='text-white'>Already have an account?</span> &nbsp;
-					<Link href={'/sign-in'}>
+					<Link href={APP_ROUTES.public.signIn}>
                         Sign in here.
 					</Link>
 				</div>

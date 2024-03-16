@@ -31,7 +31,7 @@ export function SendMessageModal() {
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed inset-0 bg-gray-800 opacity-50" />
 				<Dialog.Content className={cn(
-					'z-50 bg-gray-900 rounded-md max-w-md w-full p-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+					'z-50 bg-gray-900 rounded-md max-w-md w-full p-8 absolute mt-24 top-0 left-1/2 -translate-x-1/2'
 				)}>
 					<Dialog.Close
 						asChild
@@ -43,7 +43,7 @@ export function SendMessageModal() {
 						</button>
 					</Dialog.Close>
 
-					<Dialog.Title>Add contact</Dialog.Title>
+					<Dialog.Title>Send message</Dialog.Title>
 
 					<form className='mt-12 flex flex-col gap-4' action={handleAddContact}>
 						<TextArea

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
+
+import { GlobalProvider } from '@/providers/GlobalProvider';
 
 import '../styles/globals.css';
 
@@ -21,7 +24,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				{children}
+				<GlobalProvider>
+					<Toaster
+						position="top-right"
+						reverseOrder={false}
+					/>
+
+					{children}
+				</GlobalProvider>
 			</body>
 		</html>
 	);

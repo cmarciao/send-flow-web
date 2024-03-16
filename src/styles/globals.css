@@ -15,19 +15,25 @@
         @apply text-2xl;
         @apply font-bold;
     }
+
+    h3 {
+        @apply text-xl;
+        @apply font-bold;
+    }
 }
 
 @tailwind components;
 @tailwind utilities;
 
-
 ::-webkit-scrollbar {
-	width: 8px;
-	/* background-color: #f3f4f6; */
+	width: 16px;
+    height: 0px;
+
+	background-color: #151515;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 8px;
-	/* border: 4px solid #f3f4f6; */
+	border: 6px solid #151515;
 	background-color: #ccc;
 }

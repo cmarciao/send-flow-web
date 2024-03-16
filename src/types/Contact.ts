@@ -1,4 +1,4 @@
 export type Contact = {
-    id: number;
+    id: string;
     number: string;
 }

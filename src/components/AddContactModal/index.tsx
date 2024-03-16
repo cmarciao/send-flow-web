@@ -1,19 +1,24 @@
 'use client';
 
-import { XIcon } from 'lucide-react';
+import { XIcon, Minus  } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import { cn } from '@/utils/cn';
 import { Button } from '../Button';
 import { Input } from '../Input';
+
 import { useAddContactModal } from './useAddContactModal';
 
 export function AddContactModal() {
 	const {
+		contacts,
 		isOpenModal,
 		openModal,
 		closeModal,
-		handleAddContact
+		updateContact,
+		handleAddContact,
+		handleAddContactToList,
+		handleRemoveContact
 	} = useAddContactModal();
 
 	return (
@@ -30,7 +35,7 @@ export function AddContactModal() {
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed inset-0 bg-gray-800 opacity-50" />
 				<Dialog.Content className={cn(
-					'z-50 bg-gray-900 rounded-md max-w-md w-full p-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+					'z-50 bg-gray-900 rounded-md max-w-md w-full p-8 absolute mt-24 top-0 left-1/2 -translate-x-1/2'
 				)}>
 					<Dialog.Close
 						asChild
@@ -42,22 +47,44 @@ export function AddContactModal() {
 						</button>
 					</Dialog.Close>
 
-					<Dialog.Title>Add contact</Dialog.Title>
+					<Dialog.Title>Add contacts</Dialog.Title>
 
-					<form className='mt-12 flex flex-col gap-4' action={handleAddContact}>
-						<Input
-							label='Number'
-							type='number'
-							placeholder='Contact number'
-							className='w-full'
-							min={0}
-							required
-						/>
-
-						<Button className='mt-8' type='submit'>
-                            Add
+					<div className='flex flex-col mt-12'>
+						<Button className='self-end' onClick={handleAddContactToList}>
+                            Add item
 						</Button>
-					</form>
+
+						<form className='mt-8 flex flex-col gap-4 max-h-[50rem] overflow-scroll' action={handleAddContact}>
+							<h3>Numbers</h3>
+
+							{contacts.map((contact) => (
+								<div key={contact.id} className='flex items-center gap-4'>
+									<Input
+										className='w-full'
+										type='number'
+										id={`number-${contact.id}`}
+										name={`number-${contact.id}`}
+										placeholder='Contact number'
+										value={contact.number}
+										onChange={(e) => updateContact(contact.id, e.target.value)}
+										min={0}
+										required
+									/>
+
+									<Button
+										className='p-0 bg-transparent text-primary'
+										onClick={() => handleRemoveContact(contact.id)}
+									>
+										<Minus />
+									</Button>
+								</div>
+							))}
+
+							<Button className='mt-8' type='submit'>
+                                Add
+							</Button>
+						</form>
+					</div>
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog.Root>
