@@ -1,7 +1,7 @@
 import { auth, db } from '@/libs/firebase';
 import { Contact } from '@/types/Contact';
 
-import { collection, doc, onSnapshot, orderBy, query, writeBatch } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, writeBatch } from 'firebase/firestore';
 
 export async function addContact(numbers: string[]) {
 	const batch = writeBatch(db);
@@ -15,7 +15,13 @@ export async function addContact(numbers: string[]) {
 		);
 	});
 
-	await batch.commit();
+	return batch.commit();
+}
+
+export function deleteContact(id: string) {
+	return deleteDoc(
+		doc(db, 'contacts', auth?.currentUser!.uid, 'numbers', id)
+	);
 }
 
 export function getContactsSnapshot(cb: (contacts: Contact[]) => void) {

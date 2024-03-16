@@ -5,7 +5,7 @@ import { signOut } from 'firebase/auth';
 
 import { Contact } from '@/types/Contact';
 import { auth } from '@/libs/firebase';
-import { getContactsSnapshot } from '@/services/contacts';
+import { deleteContact, getContactsSnapshot } from '@/services/contacts';
 import { useAuth } from '@/hooks/useAuth';
 import { APP_ROUTES } from '@/constants/app-routes';
 
@@ -40,9 +40,20 @@ export function useHome() {
 		}
 	}
 
+	async function handleDeleteContact(id: string) {
+		try {
+			await deleteContact(id);
+
+			toast.success('Contact deleted successfully.');
+		} catch {
+			toast.error('Something went wrong.');
+		}
+	}
+
 	return {
 		contacts,
 		isLoadingContacts,
-		handleSignOut
+		handleSignOut,
+		handleDeleteContact
 	};
 }

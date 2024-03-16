@@ -16,7 +16,8 @@ export default function Home() {
 	const {
 		contacts,
 		isLoadingContacts,
-		handleSignOut
+		handleSignOut,
+		handleDeleteContact
 	} = useHome();
 
 	return (
@@ -60,7 +61,8 @@ export default function Home() {
 					{!isLoadingContacts && contacts.length > 0 && contacts.map((contact) => (
 						<ContactCard
 							key={contact.id}
-							number={contact.number}
+							contact={contact}
+							onDeleteContact={handleDeleteContact}
 						/>
 					))}
 
