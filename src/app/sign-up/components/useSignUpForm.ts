@@ -17,7 +17,7 @@ export function useSignUpForm() {
 			push(APP_ROUTES.private.home);
 		} catch(e) {
 			// @ts-expect-error comment
-			if(e?.code === 'auth/email-already-in-use)') {
+			if(e?.code?.includes('already')) {
 				toast.error('User already exists.');
 			} else {
 				toast.error('Something went wrong, try again.');
