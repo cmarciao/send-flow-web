@@ -36,7 +36,7 @@ export default function Home() {
 					<section className={cn('flex flex-col mt-8')}>
 						<div className='flex items-center justify-between'>
 							<AddContactModal />
-							<SendMessageModal />
+							{contacts.length > 0 && <SendMessageModal />}
 						</div>
 
 						<h2 className={
@@ -66,7 +66,7 @@ export default function Home() {
 
 					{!isLoadingContacts && contacts.length === 0 && (
 						<div className='flex flex-col justify-center items-center mt-16'>
-							<Info color='#ee3939' size={64}/>
+							<Info color='#FFDE07' size={86}/>
 							<h2 className='text-center mt-4 text-white'>
                                 Your contact list is empty, add new contacts to send messages to.
 							</h2>

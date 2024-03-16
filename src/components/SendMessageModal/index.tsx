@@ -48,6 +48,8 @@ export function SendMessageModal() {
 					<form className='mt-12 flex flex-col gap-4' action={handleAddContact}>
 						<TextArea
 							label='Message'
+							id='message'
+							name='message'
 							placeholder='Your message'
 							className='w-full min-h-32'
 							required
