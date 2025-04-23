@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
-import { Divider } from '@/components/Divider';
+import { Divider, PageInformations } from '@/components';
 import { SignUpForm } from './components/sign-up-form';
 import { APP_ROUTES } from '@/routes/app-routes';
-import { PageInformations } from '@/components/page-informations';
 
 export default function SignUp() {
     return (

@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
-import { Divider } from '@/components/Divider';
+import { Divider, PageInformations } from '@/components';
 import { SignInForm } from './components/sign-in-form';
 import { APP_ROUTES } from '@/routes/app-routes';
-import { PageInformations } from '@/components/page-informations';
 
 export default function SignIn() {
     return (

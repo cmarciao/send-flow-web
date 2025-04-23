@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { authState } from "rxfire/auth";
 import { auth } from "@/libs/firebase";
-import { Spinner } from "@/components/Spinner";
+import { Spinner } from "@/components";
 import { AuthContext, AuthContextProvider } from "@/contexts/auth-context";
 import useObservable from "@/hooks/use-observable";
 

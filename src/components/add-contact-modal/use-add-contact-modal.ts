@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { addContact } from '@/services/contacts';
-import { Contact } from '@/types/Contact';
+import { Contact } from '@/types/contact';
 
 export function useAddContactModal() {
     const [contacts, setContacts] = useState<Contact[]>([{

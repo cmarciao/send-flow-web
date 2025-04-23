@@ -1,10 +1,6 @@
 import { LogOut, Info } from 'lucide-react';
 
-import { Spinner } from '@/components/Spinner';
-import { PageInformations } from '@/components/page-informations';
-import { ContactCard } from '@/components/ContactCard';
-import { AddContactModal } from '@/components/add-contact-modal';
-import { SendMessageModal } from '@/components/send-message-modal';
+import { Spinner, PageInformations, ContactCard, AddContactModal, SendMessageModal } from '@/components';
 
 import { cn } from '@/utils/cn';
 import { useHome } from './use-home';

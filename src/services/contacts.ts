@@ -3,7 +3,7 @@ import { collectionData } from 'rxfire/firestore';
 import { collection, CollectionReference, deleteDoc, doc, orderBy, Query, query, serverTimestamp, writeBatch } from 'firebase/firestore';
 
 import { auth, db } from '@/libs/firebase';
-import { Contact } from '@/types/Contact';
+import { Contact } from '@/types/contact';
 
 export async function addContact(numbers: string[]) {
     const batch = writeBatch(db);

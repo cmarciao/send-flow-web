@@ -3,8 +3,8 @@
 import { XIcon } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
-import { Button } from '../Button';
-import { TextArea } from '../TextArea';
+import { Button } from '../button';
+import { TextArea } from '../text-area';
 
 import { cn } from '@/utils/cn';
 import { useSendMessageModal } from './use-send-message-modal';

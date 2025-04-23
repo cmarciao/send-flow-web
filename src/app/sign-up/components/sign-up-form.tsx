@@ -1,6 +1,4 @@
-import { Input } from '@/components/Input';
-import { Button } from '@/components/Button';
-
+import { Input, Button } from '@/components';
 import { useSignUpForm } from './use-sign-up-form';
 
 export function SignUpForm() {

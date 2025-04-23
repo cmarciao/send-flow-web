@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '@/libs/firebase';
-import { Contact } from '@/types/Contact';
+import { Contact } from '@/types/contact';
 
 export async function sendMessage(message: string) {
     const contacts: Contact[] = [];

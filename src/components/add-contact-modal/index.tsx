@@ -4,8 +4,8 @@ import { XIcon, Minus } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import { cn } from '@/utils/cn';
-import { Button } from '../Button';
-import { Input } from '../Input';
+import { Button } from '../button';
+import { Input } from '../input';
 
 import { useAddContactModal } from './use-add-contact-modal';
 
