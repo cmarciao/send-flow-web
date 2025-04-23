@@ -1,31 +1,37 @@
-import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 import { signIn } from '@/services/auth';
-import { APP_ROUTES } from '@/constants/app-routes';
+import { APP_ROUTES } from '@/routes/app-routes';
+import { FormEvent } from 'react';
 
 export function useSignInForm() {
-	const { push } = useRouter();
+    const navigate = useNavigate();
 
-	async function handleSignIn(formData: FormData) {
-		const email = formData.get('email')!.toString();
-		const password = formData.get('password')!.toString();
+    async function handleSignIn(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
 
-		try {
-			await signIn(email, password);
+        const form = event.currentTarget;
+        const formData = new FormData(form);
 
-			push(APP_ROUTES.private.home);
-		} catch(e) {
-			// @ts-expect-error comment
-			if(e?.code === 'auth/invalid-credential') {
-				toast.error('Email or password is invalid.');
-			} else {
-				toast.error('Something went wrong, try again.');
-			}
-		}
-	}
+        const email = formData.get('email')!.toString();
+        const password = formData.get('password')!.toString();
 
-	return {
-		handleSignIn
-	};
+        try {
+            await signIn(email, password);
+
+            navigate(APP_ROUTES.private.home);
+        } catch (e) {
+            // @ts-expect-error comment
+            if (e?.code === 'auth/invalid-credential') {
+                toast.error('Email or password is invalid.');
+            } else {
+                toast.error('Something went wrong, try again.');
+            }
+        }
+    }
+
+    return {
+        handleSignIn
+    };
 }

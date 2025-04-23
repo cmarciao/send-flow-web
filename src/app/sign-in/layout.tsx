@@ -1,24 +1,24 @@
-'use client';
+// 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
 
-import { useAuth } from '@/hooks/useAuth';
-import { APP_ROUTES } from '@/constants/app-routes';
+// import { useAuth } from '@/hooks/useAuth';
+// import { APP_ROUTES } from '@/routes/app-routes';
 
-export default function SignInLayout({
-	children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-	const { user } = useAuth();
-	const { replace } = useRouter();
+// export default function SignInLayout({
+// 	children,
+// }: Readonly<{
+// 	children: React.ReactNode;
+// }>) {
+// 	const { user } = useAuth();
+// 	const { replace } = useRouter();
 
-	useEffect(() => {
-		if(user) {
-			replace(APP_ROUTES.private.home);
-		}
-	}, []);
+// 	useEffect(() => {
+// 		if (user) {
+// 			replace(APP_ROUTES.private.home);
+// 		}
+// 	}, []);
 
-	return children;
-}
+// 	return children;
+// }

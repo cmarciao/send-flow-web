@@ -1,6 +1,3 @@
-'use client';
-
-import Link from 'next/link';
 import { LogOut, Info } from 'lucide-react';
 
 import { Spinner } from '@/components/Spinner';
@@ -10,72 +7,73 @@ import { SendMessageModal } from '@/components/SendMessageModal';
 
 import { cn } from '@/utils/cn';
 import { useHome } from './useHome';
-import { APP_ROUTES } from '@/constants/app-routes';
+import { APP_ROUTES } from '@/routes/app-routes';
+import { Link } from 'react-router';
 
 export default function Home() {
-	const {
-		contacts,
-		isLoadingContacts,
-		handleSignOut,
-		handleDeleteContact
-	} = useHome();
+    const {
+        contacts,
+        isLoadingContacts,
+        handleSignOut,
+        handleDeleteContact
+    } = useHome();
 
-	return (
-		<main className="flex justify-center mt-24 mb-8">
-			<section className='max-w-screen-md w-full'>
-				<button onClick={handleSignOut}>
-					<Link href={APP_ROUTES.public.signIn}>
-						<LogOut color='white' />
-					</Link>
-				</button>
+    return (
+        <main className="flex justify-center mt-24 mb-8">
+            <section className='max-w-screen-md w-full'>
+                <button onClick={handleSignOut}>
+                    <Link to={APP_ROUTES.public.signIn}>
+                        <LogOut color='white' />
+                    </Link>
+                </button>
 
-				<header className='text-center'>
-					<h1>My Contacts</h1>
-				</header>
+                <header className='text-center'>
+                    <h1>My Contacts</h1>
+                </header>
 
-				{!isLoadingContacts && (
-					<section className={cn('flex flex-col mt-8')}>
-						<div className='flex items-center justify-between'>
-							<AddContactModal />
-							{contacts.length > 0 && <SendMessageModal />}
-						</div>
+                {!isLoadingContacts && (
+                    <section className={cn('flex flex-col mt-8')}>
+                        <div className='flex items-center justify-between'>
+                            <AddContactModal />
+                            {contacts.length > 0 && <SendMessageModal />}
+                        </div>
 
-						<h2 className={
-							cn(
-								'text-white mt-8 mb-4',
-								'sm:mb-0'
-							)
-						}>
-                        You have {contacts.length} {contacts.length === 1 ? ' contact' : ' contacts'}
-						</h2>
-					</section>
-				)}
+                        <h2 className={
+                            cn(
+                                'text-white mt-8 mb-4',
+                                'sm:mb-0'
+                            )
+                        }>
+                            You have {contacts.length} {contacts.length === 1 ? ' contact' : ' contacts'}
+                        </h2>
+                    </section>
+                )}
 
-				<div className='flex flex-col gap-4 mt-8'>
-					{isLoadingContacts && (
-						<div className='flex justify-center mt-24'>
-							<Spinner />
-						</div>
-					)}
+                <div className='flex flex-col gap-4 mt-8'>
+                    {isLoadingContacts && (
+                        <div className='flex justify-center mt-24'>
+                            <Spinner />
+                        </div>
+                    )}
 
-					{!isLoadingContacts && contacts.length > 0 && contacts.map((contact) => (
-						<ContactCard
-							key={contact.id}
-							contact={contact}
-							onDeleteContact={handleDeleteContact}
-						/>
-					))}
+                    {!isLoadingContacts && contacts.length > 0 && contacts.map((contact) => (
+                        <ContactCard
+                            key={contact.id}
+                            contact={contact}
+                            onDeleteContact={handleDeleteContact}
+                        />
+                    ))}
 
-					{!isLoadingContacts && contacts.length === 0 && (
-						<div className='flex flex-col justify-center items-center mt-16'>
-							<Info color='#FFDE07' size={86}/>
-							<h2 className='text-center mt-4 text-white'>
+                    {!isLoadingContacts && contacts.length === 0 && (
+                        <div className='flex flex-col justify-center items-center mt-16'>
+                            <Info color='#FFDE07' size={86} />
+                            <h2 className='text-center mt-4 text-white'>
                                 Your contact list is empty, add new contacts to send messages to.
-							</h2>
-						</div>
-					)}
-				</div>
-			</section>
-		</main>
-	);
+                            </h2>
+                        </div>
+                    )}
+                </div>
+            </section>
+        </main>
+    );
 }

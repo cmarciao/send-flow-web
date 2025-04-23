@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { signOut } from 'firebase/auth';
 
@@ -7,53 +6,54 @@ import { Contact } from '@/types/Contact';
 import { auth } from '@/libs/firebase';
 import { deleteContact, getContactsSnapshot } from '@/services/contacts';
 import { useAuth } from '@/hooks/useAuth';
-import { APP_ROUTES } from '@/constants/app-routes';
+import { APP_ROUTES } from '@/routes/app-routes';
+import { useNavigate } from 'react-router';
 
 export function useHome() {
-	const { user } = useAuth();
-	const { push } = useRouter();
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
-	const [contacts, setContacts] = useState<Contact[]>([]);
-	const [isLoadingContacts, setIsLoadingContacts] = useState(true);
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const [isLoadingContacts, setIsLoadingContacts] = useState(true);
 
-	useEffect(() => {
-		if(!user) {
-			push(APP_ROUTES.public.signIn);
-			return;
-		}
+    useEffect(() => {
+        if (!user) {
+            navigate(APP_ROUTES.public.signIn);
+            return;
+        }
 
-		const unbscribe = getContactsSnapshot((contacts) => {
-			setContacts(contacts);
-			setIsLoadingContacts(false);
-		});
+        const unbscribe = getContactsSnapshot((contacts) => {
+            setContacts(contacts);
+            setIsLoadingContacts(false);
+        });
 
-		return () => unbscribe();
-	}, [user]);
+        return () => unbscribe();
+    }, [user]);
 
-	function handleSignOut() {
-		try {
-			signOut(auth);
+    function handleSignOut() {
+        try {
+            signOut(auth);
 
-			push(APP_ROUTES.public.signIn);
-		} catch {
-			toast.error('Something went wrong.');
-		}
-	}
+            navigate(APP_ROUTES.public.signIn);
+        } catch {
+            toast.error('Something went wrong.');
+        }
+    }
 
-	async function handleDeleteContact(id: string) {
-		try {
-			await deleteContact(id);
+    async function handleDeleteContact(id: string) {
+        try {
+            await deleteContact(id);
 
-			toast.success('Contact deleted successfully.');
-		} catch {
-			toast.error('Something went wrong.');
-		}
-	}
+            toast.success('Contact deleted successfully.');
+        } catch {
+            toast.error('Something went wrong.');
+        }
+    }
 
-	return {
-		contacts,
-		isLoadingContacts,
-		handleSignOut,
-		handleDeleteContact
-	};
+    return {
+        contacts,
+        isLoadingContacts,
+        handleSignOut,
+        handleDeleteContact
+    };
 }

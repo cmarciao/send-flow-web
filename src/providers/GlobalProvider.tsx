@@ -1,16 +1,14 @@
-'use client';
-
 import { ReactNode } from 'react';
-import { AuthProvider } from '@/contexts/AuthContext';
+import { AuthProvider } from './AuthProvider';
 
 type GlobalProviderProps = {
     children: ReactNode;
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
-	return (
-		<AuthProvider>
-			{children}
-		</AuthProvider>
-	);
+    return (
+        <AuthProvider>
+            {children}
+        </AuthProvider>
+    );
 }
