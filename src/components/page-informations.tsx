@@ -5,7 +5,7 @@ type TitleProps = {
     description: string;
 }
 
-export function Title({ title, description }: TitleProps) {
+export function PageInformations({ title, description }: TitleProps) {
     return (
         <Helmet>
             <title>{title}</title>

@@ -1,13 +1,9 @@
 import { FormEvent } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router';
 
 import { signUp } from '@/services/auth';
-import { APP_ROUTES } from '@/routes/app-routes';
 
 export function useSignUpForm() {
-    const navigate = useNavigate();
-
     async function handleSignUp(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
@@ -19,10 +15,7 @@ export function useSignUpForm() {
 
         try {
             await signUp(email, password);
-
-            navigate(APP_ROUTES.private.home);
         } catch (e) {
-            console.log({ e });
             // @ts-expect-error comment
             if (e?.code?.includes('already')) {
                 toast.error('User already exists.');

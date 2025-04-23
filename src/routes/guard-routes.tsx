@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router";
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "@/hooks/use-auth"
 import { APP_ROUTES } from "@/routes/app-routes";
 
 type GuardRoutesProps = {

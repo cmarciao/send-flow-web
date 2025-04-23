@@ -1,15 +1,13 @@
-import { Link } from 'react-router';
 import { LogOut, Info } from 'lucide-react';
 
 import { Spinner } from '@/components/Spinner';
+import { PageInformations } from '@/components/page-informations';
 import { ContactCard } from '@/components/ContactCard';
 import { AddContactModal } from '@/components/add-contact-modal';
 import { SendMessageModal } from '@/components/send-message-modal';
 
 import { cn } from '@/utils/cn';
-import { useHome } from './useHome';
-import { APP_ROUTES } from '@/routes/app-routes';
-import { Title } from '@/components/page-title';
+import { useHome } from './use-home';
 
 export default function Home() {
     const {
@@ -21,16 +19,14 @@ export default function Home() {
 
     return (
         <main className="flex justify-center mt-24 mb-8">
-            <Title
+            <PageInformations
                 title='Contacts'
                 description='Contacts list'
             />
 
             <section className='max-w-screen-md w-full'>
                 <button onClick={handleSignOut}>
-                    <Link to={APP_ROUTES.public.signIn}>
-                        <LogOut color='white' />
-                    </Link>
+                    <LogOut color='white' />
                 </button>
 
                 <header className='text-center'>

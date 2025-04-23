@@ -19,10 +19,9 @@ export function useSendMessageModal() {
 
         const form = event.currentTarget;
         const formData = new FormData(form);
+        const message = formData.get('message')!.toString();
 
         try {
-            const message = formData.get('message')!.toString();
-
             await sendMessage(message);
 
             toast.success('Message sent successfully.');

@@ -1,13 +1,13 @@
 import { Link } from 'react-router';
 import { Divider } from '@/components/Divider';
-import { SignInForm } from './components/SignInForm';
+import { SignInForm } from './components/sign-in-form';
 import { APP_ROUTES } from '@/routes/app-routes';
-import { Title } from '@/components/page-title';
+import { PageInformations } from '@/components/page-informations';
 
 export default function SignIn() {
     return (
         <main className='h-screen flex items-center justify-center'>
-            <Title
+            <PageInformations
                 title='Sign in'
                 description='Sign in with an account'
             />

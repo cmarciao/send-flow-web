@@ -1,7 +1,7 @@
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
 
-import { useSignUpForm } from './useSignUpForm';
+import { useSignUpForm } from './use-sign-up-form';
 
 export function SignUpForm() {
     const { handleSignUp } = useSignUpForm();

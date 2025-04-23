@@ -1,13 +1,13 @@
 import { Link } from 'react-router';
 import { Divider } from '@/components/Divider';
-import { SignUpForm } from './components/SignUpForm';
+import { SignUpForm } from './components/sign-up-form';
 import { APP_ROUTES } from '@/routes/app-routes';
-import { Title } from '@/components/page-title';
+import { PageInformations } from '@/components/page-informations';
 
 export default function SignUp() {
     return (
         <main className='h-screen flex items-center justify-center'>
-            <Title
+            <PageInformations
                 title='Sign up'
                 description='Create your account.'
             />
