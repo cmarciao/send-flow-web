@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import { AuthProvider } from './AuthProvider';
+
+import { AuthProvider } from './auth-provider';
+import { HelmetProvider } from './helmet-provider';
 
 type GlobalProviderProps = {
     children: ReactNode;
@@ -8,7 +10,9 @@ type GlobalProviderProps = {
 export function GlobalProvider({ children }: GlobalProviderProps) {
     return (
         <AuthProvider>
-            {children}
+            <HelmetProvider>
+                {children}
+            </HelmetProvider>
         </AuthProvider>
     );
 }

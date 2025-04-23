@@ -26,14 +26,19 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-	width: 16px;
+    width: 16px;
     height: 0px;
 
-	background-color: #151515;
+    background-color: #151515;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 8px;
-	border: 6px solid #151515;
-	background-color: #ccc;
+    border-radius: 8px;
+    border: 6px solid #151515;
+    background-color: #ccc;
+}
+
+html,
+body {
+    font-family: "Roboto", sans-serif;
 }

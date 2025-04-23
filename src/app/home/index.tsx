@@ -1,14 +1,15 @@
+import { Link } from 'react-router';
 import { LogOut, Info } from 'lucide-react';
 
 import { Spinner } from '@/components/Spinner';
 import { ContactCard } from '@/components/ContactCard';
-import { AddContactModal } from '@/components/AddContactModal';
-import { SendMessageModal } from '@/components/SendMessageModal';
+import { AddContactModal } from '@/components/add-contact-modal';
+import { SendMessageModal } from '@/components/send-message-modal';
 
 import { cn } from '@/utils/cn';
 import { useHome } from './useHome';
 import { APP_ROUTES } from '@/routes/app-routes';
-import { Link } from 'react-router';
+import { Title } from '@/components/page-title';
 
 export default function Home() {
     const {
@@ -20,6 +21,11 @@ export default function Home() {
 
     return (
         <main className="flex justify-center mt-24 mb-8">
+            <Title
+                title='Contacts'
+                description='Contacts list'
+            />
+
             <section className='max-w-screen-md w-full'>
                 <button onClick={handleSignOut}>
                     <Link to={APP_ROUTES.public.signIn}>
