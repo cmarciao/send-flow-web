@@ -9,9 +9,9 @@ export default function useObservable<T>(
     const [state, setState] = useState(initialState);
 
     useEffect(() => {
-        const hasInvalidDependency = deps.some(it => !!it);
+        const hasInvalidDependency = deps.every(it => !!it);
 
-        if (hasInvalidDependency) return;
+        if (!hasInvalidDependency) return;
 
         const subscription = observable().subscribe(setState);
 
