@@ -25,6 +25,12 @@
         "paths": {
             "@/*": [
                 "./src/*"
+            ],
+            "@components/*": [
+                "./src/app/components/*"
+            ],
+            "@components": [
+                "./src/app/components/index.tsx"
             ]
         },
         "forceConsistentCasingInFileNames": true

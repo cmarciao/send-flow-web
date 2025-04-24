@@ -1,10 +1,13 @@
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { addContact } from '@/app/apps/contacts/contacts';
+import { addContact } from '@/app/apps/contacts/contacts-model';
 import { Contact } from '@/app/apps/contacts/contact';
+import { useCurrentUser } from '../../users/user-model';
 
 export function useAddContactModal() {
+    const currentUser = useCurrentUser()!;
+
     const [contacts, setContacts] = useState<Contact[]>([{
         id: '0',
         number: ''
@@ -59,7 +62,7 @@ export function useAddContactModal() {
         const numbers = contacts.map(contact => contact.number);
 
         try {
-            await addContact(numbers);
+            await addContact(numbers, currentUser.uid);
 
             closeModal();
 

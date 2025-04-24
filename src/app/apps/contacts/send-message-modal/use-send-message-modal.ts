@@ -1,9 +1,10 @@
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { sendMessage } from '@/app/apps/messages/messages';
-
+import { sendMessage } from '@/app/apps/messages/messages-facade';
+import { useCurrentUser } from '../../users/user-model';
 export function useSendMessageModal() {
+    const currentUser = useCurrentUser()!;
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     function openModal() {
@@ -22,7 +23,7 @@ export function useSendMessageModal() {
         const message = formData.get('message')!.toString();
 
         try {
-            await sendMessage(message);
+            await sendMessage(currentUser.uid, message);
 
             toast.success('Message sent successfully.');
 

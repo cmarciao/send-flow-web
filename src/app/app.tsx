@@ -1,16 +1,19 @@
-import { Router } from "@/core/routes/router";
+import { Router } from "./configs/router";
 import { Toaster } from "react-hot-toast";
-import { GlobalProvider } from "@/core/providers/global-provider";
+import { Authorization } from "./apps/auth/authorization";
+import { HelmetProvider } from "react-helmet-async";
 
 export function App() {
     return (
-        <GlobalProvider>
-            <Toaster
-                position="top-right"
-                reverseOrder={false}
-            />
+        <Authorization>
+            <HelmetProvider>
+                <Toaster
+                    position="top-right"
+                    reverseOrder={false}
+                />
 
-            <Router />
-        </GlobalProvider>
+                <Router />
+            </HelmetProvider>
+        </Authorization>
     );
 }
