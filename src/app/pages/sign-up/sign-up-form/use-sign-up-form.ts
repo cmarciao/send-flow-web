@@ -1,7 +1,5 @@
 import { FormEvent } from 'react';
-import toast from 'react-hot-toast';
-
-import { signUp } from '@/app/apps/auth/auth';
+import { handleSignUp as handleSignUpFirebase } from '@/app/apps/auth/auth-facade';
 
 export function useSignUpForm() {
     async function handleSignUp(event: FormEvent<HTMLFormElement>) {
@@ -13,16 +11,7 @@ export function useSignUpForm() {
         const email = formData.get('email')!.toString();
         const password = formData.get('password')!.toString();
 
-        try {
-            await signUp(email, password);
-        } catch (e) {
-            // @ts-expect-error comment
-            if (e?.code?.includes('already')) {
-                toast.error('User already exists.');
-            } else {
-                toast.error('Something went wrong, try again.');
-            }
-        }
+        await handleSignUpFirebase(email, password);
     }
 
     return {

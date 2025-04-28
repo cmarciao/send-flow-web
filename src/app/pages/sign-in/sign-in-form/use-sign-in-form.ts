@@ -1,7 +1,5 @@
 import { FormEvent } from 'react';
-import toast from 'react-hot-toast';
-
-import { signIn } from '@/app/apps/auth/auth';
+import { handleSignIn as handleSignInFirebase } from '@/app/apps/auth/auth-facade';
 
 export function useSignInForm() {
     async function handleSignIn(event: FormEvent<HTMLFormElement>) {
@@ -13,16 +11,7 @@ export function useSignInForm() {
         const email = formData.get('email')!.toString();
         const password = formData.get('password')!.toString();
 
-        try {
-            await signIn(email, password);
-        } catch (e) {
-            // @ts-expect-error comment
-            if (e?.code === 'auth/invalid-credential') {
-                toast.error('Email or password is invalid.');
-            } else {
-                toast.error('Something went wrong, try again.');
-            }
-        }
+        await handleSignInFirebase(email, password);
     }
 
     return {
